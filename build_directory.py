@@ -1,9 +1,11 @@
 from pathlib import Path
 
 from bs4 import BeautifulSoup
-import feedparser
-import typer
 from jinja2 import Environment, FileSystemLoader
+
+import feedparser
+import subprocess
+import typer
 
 app = typer.Typer()
 
@@ -53,6 +55,15 @@ To load a template, ensure there is a file with the given name.
 
     return typer.echo('Done! ^_^!')
 
+
+@app.command()
+def make_still_video(image: str, audio: str, speed='medium', output='output.mp4'):
+    """Create Video from Given Audio, Video"""
+    cmd = ['ffmpeg', '-loop', '1', '-i', Path(image), '-i', Path(audio), '-c:a', 'aac', '-c:v', 'libx264', '-preset', speed,
+            '-strict', 'experimental', '-loglevel', 'error', '-b:a', '192k', '-shortest', output]
+
+    subprocess.run(cmd)
+    return typer.echo('Done! ^_^!')
 
 
 if __name__ == "__main__":
