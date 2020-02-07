@@ -57,8 +57,32 @@ To load a template, ensure there is a file with the given name.
 
 
 @app.command()
-def make_still_video(image: str, audio: str, speed='medium', output='output.mp4'):
+def make_still_video(
+        directory: str='',
+        image: str='',
+        audio: str='',
+        speed='medium',
+        output='output.mp4',
+        ):
     """Create Video from Given Audio, Video"""
+
+    if directory:
+        image = list(
+                filter(
+                    lambda x: x.suffix in ['.jpg', '.png'],
+                    Path(directory).iterdir()))[0]
+
+        typer.echo(f'{image=}')
+
+        audio = list(
+                filter(
+                    lambda x: x.suffix in ['.mp3', '.wav'],
+                    Path(directory).iterdir()))[0]
+
+        typer.echo(f'{audio=}')
+
+        output = image.with_suffix('.mp4')
+
     cmd = ['ffmpeg', '-loop', '1', '-i', Path(image), '-i', Path(audio), '-c:a', 'aac', '-c:v', 'libx264', '-preset', speed,
             '-strict', 'experimental', '-loglevel', 'error', '-b:a', '192k', '-shortest', output]
 
