@@ -5,3 +5,4 @@ Jinja2==2.11.1
 MarkupSafe==1.1.1
 soupsieve==1.9.5
 typer==0.0.8
+pyvenv.cfg
