@@ -90,6 +90,16 @@ def make_still_video(
     return typer.echo('Done! ^_^!')
 
 
+@app.command()
+def bulk_still_video(path:str='.'):
+    """Run make_still_video for every folder in the path"""
+    for folder in Path(path).iterdir():
+        if folder.is_dir():
+            make_still_video(
+                    directory=folder,
+                    output=folder.with_suffix('.mp4'),
+                    )
+
 if __name__ == "__main__":
     app()
 
