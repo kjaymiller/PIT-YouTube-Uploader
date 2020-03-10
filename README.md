@@ -17,4 +17,4 @@ This is a script designed for use on macOS. Tested for macOS Mojave 10.14+. It s
 ## License
 This is a simple script that executes the commands to create a ffmpeg subprocess. ffmpeg is licensed under the LGPL 2.1 and should not be bundled or used for in any distributed product. No ffmpeg code has been bundled or will ever be bundled in with this script. 
 
-The Project itself is [MIT Licensed](/license)
+The Project itself is [MIT Licensed](/LICENSE)
