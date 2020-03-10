@@ -3,12 +3,15 @@ Create Single Image YouTube Videos using ffmpeg.
 
 # Requirements
 This is a script designed for use on macOS. Tested for macOS Mojave 10.14+. It should work on any 
-* python3.8
+* python3.6+
+* [ffmpeg](https://ffmpeg.org)
 
 # Instructions
 - Clone the repository
 - Ensure you have ffmpeg installed (Homebrew Recommended)
   - `brew install ffmpeg`
+- create virtualenvironment
+- install requirements `pip install -r requirements.txt`
 
 ## TODOs
 - reorganize/refactor code
